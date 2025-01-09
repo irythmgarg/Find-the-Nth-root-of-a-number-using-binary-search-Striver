@@ -1,0 +1,28 @@
+Explanation of the Code
+Helper Function pow:
+
+This function calculates base expo
+up to the value 
+𝑚
+m.
+Returns:
+1 if 
+base
+expo𝑚base expo=m.2 if baseexpo>𝑚base expo>m. 0 if baseexpo<𝑚
+base expo<m.
+Binary Search in nthRoot: The function searches for the integer 𝑥
+x such that 𝑥𝑛=𝑚x n =m using binary search.If 
+pow(𝑚𝑖𝑑,𝑛,𝑚)==1
+pow(mid,n,m)==1, mid is the nth root.
+If pow(𝑚𝑖𝑑,𝑛,𝑚)==2
+pow(mid,n,m)==2, move left (e = mid - 1).
+Otherwise, move right (s = mid + 1).
+Edge Cases Handled n=1: The root is m itself.
+m=1: The nth root is always 
+1
+No valid nth root exists: Return -1.
+Time Complexity
+pow function: 
+O(logm) due to binary multiplication.
+Binary search: O(logm).
+Total: O((logm)×n).
