@@ -1,0 +1,28 @@
+int pow(int base, int expo, int m) {
+    long long ans = 1; // Use long long to prevent integer overflow
+    while (expo > 0) {
+        ans *= base;
+        if (ans > m) // If the result exceeds m, return 2
+            return 2;
+        expo--; // Decrement the exponent
+    }
+    if (ans == m) // If the result is equal to m, return 1
+        return 1;
+    return 0; // Otherwise, return 0
+}
+
+int nthRoot(int n, int m) {
+    int s = 1;         // Start of the range
+    int e = m;         // End of the range
+    while (s <= e) {
+        int mid = s + (e - s) / 2; // Prevent overflow in calculating mid
+        int result = pow(mid, n, m); // Call the helper function
+        if (result == 1) // If mid^n == m, return mid as the nth root
+            return mid;
+        else if (result == 2) // If mid^n > m, reduce the search space
+            e = mid - 1;
+        else // If mid^n < m, increase the search space
+            s = mid + 1;
+    }
+    return -1; // If no valid nth root is found, return -1
+}
